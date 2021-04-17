@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import rootStore from './store/index'
+import rootReducer from './store/index'
 import {Provider} from "react-redux";
-import {createStore} from "redux";
+import {applyMiddleware,createStore} from "redux";
+import thunk from 'redux-thunk';
+import {fetchPokemon} from "./store/reducer/pokemon";
 
-const store = createStore(rootStore);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+store.dispatch(fetchPokemon)
 const PokemonApp = () => (
   <Provider store={store}>
     <App/>

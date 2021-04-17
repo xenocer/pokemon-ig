@@ -1,23 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { HeaderResponsive } from "./component/Header"
+import {deepMerge} from "grommet/utils";
+import {grommet} from "grommet/themes";
+import {Grommet} from "grommet";
+import React from "react";
+const defaultTheme = deepMerge(grommet,{
+  global: {
+    drop: {
+      shadowSize: 'medium',
+      extend: `
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          overflow: hidden;
+        `,
+    },
+    elevation: {
+      dark: {
+        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+      },
+      light: {
+        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+      },
+    },
+    input: {
+      weight: 400,
+    },
+    font: {
+      family: 'apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      size: '18px',
+      height: '20px',
+    },
+  },
+  textInput: {
+    extend: () => `
+      margin: 0 auto;
+      &:focus {
+        box-shadow: none;
+        border-color: initial;
+      }
+    `,
+    suggestions: {
+      extend: () => `
+        background: #fafafa;
+        color: #3d3522;
+        li {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+      `,
+    },
+  },
+});
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grommet theme={defaultTheme}>
+        <HeaderResponsive></HeaderResponsive>
+      </Grommet>
+
     </div>
   );
 }
