@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import rootReducer from './store/index'
+import {Provider} from "react-redux";
+import {applyMiddleware,createStore} from "redux";
+import thunk from 'redux-thunk';
+import {fetchPokedexNo} from "./store/reducer/pokemon";
+import {BrowserRouter} from "react-router-dom"
+const store = createStore(rootReducer, applyMiddleware(thunk));
+store.dispatch(fetchPokedexNo)
+const PokemonApp = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
+  </Provider>
+)
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <PokemonApp/>,
   document.getElementById('root')
 );
 
