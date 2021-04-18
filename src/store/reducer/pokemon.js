@@ -1,14 +1,26 @@
 import {
   getPokedexNo,
   getPokemonListData, getPokemonListWithLimit,
-  getSelectedPokemonData,
+  searchListPokemonFromName,
   searchPokemonFromName
 } from "../../repository/pokemon";
 
 const initState = {
   pokemonList: [],
   searchList:[],
-  selectedPokemon: {},
+  selectedPokemon: {
+    picture: "",
+    height: 0,
+    id: 0,
+    name: "",
+    species: {
+      name: "",
+      url: ""
+    },
+    stats: [],
+    types: [],
+    weight: 0
+  },
   pokedexNo: 0
 } ;
 export const pokemonReducer = (state = initState, { type, payload }) => {
@@ -33,6 +45,11 @@ export const pokemonReducer = (state = initState, { type, payload }) => {
         ...state,
         searchList: []
       }
+    case 'SEARCH_SELECTED':
+      return {
+        ...state,
+        selectedPokemon: payload
+      }
     default:
       return state
   }
@@ -43,10 +60,16 @@ export async function fetchPokemon(dispatch, getState) {
   })
   dispatch({ type: 'GET_LIST', payload: response })
 }
-export function searchPokemon(name) {
+export function searchListPokemon(name) {
   return async function saveNewSearchThunk(dispatch, getState) {
-    const response = await searchPokemonFromName(name).then(resp => resp)
+    const response = await searchListPokemonFromName(name).then(resp => resp)
     dispatch({ type: 'SEARCH', payload: response })
+  }
+}
+export function searchPokemon(name) {
+  return async function savePokemonThunk(dispatch, getState) {
+    const response = await searchPokemonFromName(name).then(resp => resp)
+    dispatch({ type: 'SEARCH_SELECTED', payload: response })
   }
 }
 export function fetchPokemonWithLimit(limit) {

@@ -1,4 +1,4 @@
-import {Box, Text} from "grommet";
+import {Box} from "grommet";
 import React from "react";
 import * as _ from "lodash";
 const TypeColorPlate = {

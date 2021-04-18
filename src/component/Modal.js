@@ -1,5 +1,4 @@
 import Modal from 'react-bootstrap/Modal'
-import {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Box, Image} from "grommet";
 import _ from "lodash";

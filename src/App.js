@@ -1,4 +1,3 @@
-import {HeaderResponsive} from "./component/Header"
 import {deepMerge} from "grommet/utils";
 import {grommet} from "grommet/themes";
 import {Grommet} from "grommet";
@@ -6,7 +5,6 @@ import {Layout} from "./layout/Layout";
 import React from "react";
 import {Redirect, Route} from "react-router";
 import {HomePage} from "./page/Home";
-import {PokemonPage} from "./page/Pokemon"
 
 const defaultTheme = deepMerge(grommet, {
   global: {
@@ -65,9 +63,6 @@ function App() {
           </Route>
           <Route path="/home">
             <HomePage/>
-          </Route>
-          <Route path="/pokemon/:name">
-            <PokemonPage/>
           </Route>
         </Layout>
       </Grommet>

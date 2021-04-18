@@ -6,10 +6,9 @@ import rootReducer from './store/index'
 import {Provider} from "react-redux";
 import {applyMiddleware,createStore} from "redux";
 import thunk from 'redux-thunk';
-import {fetchPokedexNo, fetchPokemon} from "./store/reducer/pokemon";
+import {fetchPokedexNo} from "./store/reducer/pokemon";
 import {BrowserRouter} from "react-router-dom"
 const store = createStore(rootReducer, applyMiddleware(thunk));
-store.dispatch(fetchPokemon)
 store.dispatch(fetchPokedexNo)
 const PokemonApp = () => (
   <Provider store={store}>

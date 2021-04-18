@@ -1,12 +1,10 @@
 import React from 'react';
 import {
-  grommet,
   Box,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Grommet,
   Text,
   Image
 } from 'grommet';
@@ -17,8 +15,8 @@ import {ModalComponent} from "./Modal";
 export const CardComponent = (props) => {
   const [modalShow, setModalShow] = React.useState(false);
   const data = props.data;
-  return (<Box pad="medium" gap="medium" height="large" width="full" key={data.id}>
-      <ModalComponent show={modalShow} onHide={() => setModalShow(false)} pokemon={data} key={data.key}></ModalComponent>
+  return (<Box name={`C_${data.name}`} pad="medium" gap="medium" height="large" width="full" key={data.key}>
+      <ModalComponent show={modalShow} onHide={() => setModalShow(false)} pokemon={data} key={"M_"+data.key}></ModalComponent>
       <Card background="light-1" round="small" elevation="large">
         <CardHeader>
           <Box pad="xsmall"
@@ -40,6 +38,7 @@ export const CardComponent = (props) => {
             >
               <Image
                 width="48px"
+                height="48px"
                 src={data.picture}
                 style={{ borderRadius: '100%' }}
               />
@@ -50,13 +49,13 @@ export const CardComponent = (props) => {
           </Box>
         </CardHeader>
         <CardBody background="#ffffff" onClick={() =>setModalShow(true)}>
-          <Box pad="small">
-            <Image src={data.picture} width="50%" alignSelf="center"/>
+          <Box pad="small" height="medium">
+            <Image fit="contain" src={data.picture} width="50%" alignSelf="center"/>
           </Box>
 
         </CardBody>
         <CardFooter background="light-2" pad="small">
-          <Box pad="xsmall" margin={{horizontal:"small"}}>
+          <Box pad="xsmall" gap="small" margin={{horizontal:"small"}}>
             <strong>Pokédex data</strong>
             <p>National №: {data.id}</p>
             <p>Species: {data.species.name}</p>
