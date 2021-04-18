@@ -7,12 +7,14 @@ import {Provider} from "react-redux";
 import {applyMiddleware,createStore} from "redux";
 import thunk from 'redux-thunk';
 import {fetchPokemon} from "./store/reducer/pokemon";
-
+import {BrowserRouter} from "react-router-dom"
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.dispatch(fetchPokemon)
 const PokemonApp = () => (
   <Provider store={store}>
-    <App/>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </Provider>
 )
 ReactDOM.render(
