@@ -1,4 +1,4 @@
-import { HeaderResponsive } from "./component/Header"
+import {HeaderResponsive} from "./component/Header"
 import {deepMerge} from "grommet/utils";
 import {grommet} from "grommet/themes";
 import {Grommet} from "grommet";
@@ -7,7 +7,8 @@ import React from "react";
 import {Redirect, Route} from "react-router";
 import {HomePage} from "./page/Home";
 import {PokemonPage} from "./page/Pokemon"
-const defaultTheme = deepMerge(grommet,{
+
+const defaultTheme = deepMerge(grommet, {
   global: {
     drop: {
       shadowSize: 'medium',
@@ -53,6 +54,7 @@ const defaultTheme = deepMerge(grommet,{
     },
   },
 });
+
 function App() {
   return (
     <div className="App">

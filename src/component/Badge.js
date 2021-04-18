@@ -29,6 +29,7 @@ export const Badge = (props) => {
       <Box
         background={{color:TypeColorPlate[item.type.name]}}
         round="small"
+        margin="xsmall"
         pad="small"
         align="center"
         width="xsmall"

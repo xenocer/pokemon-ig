@@ -16,3 +16,7 @@ export const pokemonMapping = (data) => {
   })
   return result;
 }
+export const pokedexNo = (data) => {
+  const result = data.number
+  return result;
+}
